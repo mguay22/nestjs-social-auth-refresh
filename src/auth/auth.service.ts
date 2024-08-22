@@ -17,7 +17,7 @@ export class AuthService {
 
   async login(user: User, response: Response, redirect = false) {
     const expiresAccessToken = new Date();
-    expiresAccessToken.setMilliseconds(
+    expiresAccessToken.setTime(
       expiresAccessToken.getTime() +
         parseInt(
           this.configService.getOrThrow<string>(
@@ -27,7 +27,7 @@ export class AuthService {
     );
 
     const expiresRefreshToken = new Date();
-    expiresRefreshToken.setMilliseconds(
+    expiresRefreshToken.setTime(
       expiresRefreshToken.getTime() +
         parseInt(
           this.configService.getOrThrow<string>(
